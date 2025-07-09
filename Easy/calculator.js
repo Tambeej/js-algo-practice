@@ -11,8 +11,29 @@ Notes
 If the input tries to divide by 0, return: "Can't divide by 0!"
 */
 
-function calculator( /*args*/ ) {
-  //your code
+function calculator(a, op, b) {
+  if (op == "-") {
+    return substract(a, b);
+  }
+  if (op == "+") {
+    return add(a, b);
+  }
+  if (op == "*") {
+    return multiple(a, b);
+  }
+  if ((op = "/")) {
+    return divide(a, b);
+  }
 }
+
+const add = (a, b) => a + b;
+const substract = (a, b) => a - b;
+const multiple = (a, b) => a * b;
+const divide = function (a, b) {
+  if (b == 0) {
+    return "Can't divide by 0!";
+  }
+  return a / b;
+};
 
 exports.solution = calculator;
