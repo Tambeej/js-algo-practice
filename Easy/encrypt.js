@@ -30,8 +30,17 @@ Notes
 All inputs are strings, no uppercases and all output must be strings.
 */
 
-function encrypt( /*args*/ ) {
-  //your code
+function encrypt(string) {
+  let newString = "";
+  const myDictionary = { a: 0, e: 1, i: 2, o: 2, u: 3 };
+  for (let letter of string) {
+    if (letter in myDictionary) {
+      newString = myDictionary[letter] + newString;
+    } else {
+      newString = letter + newString;
+    }
+  }
+  return newString + "aca";
 }
 
 exports.solution = encrypt;
