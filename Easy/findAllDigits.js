@@ -15,8 +15,26 @@ Notes
 The digits can be discovered in any order.
 */
 
-function findAllDigits( /*args*/ ) {
-  //your code
+function findAllDigits(array) {
+  let numbersSet = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  for (let i = 0; i < array.length; i++) {
+    let number = array[i];
+    let devider = 1000;
+    let digit = Math.floor(number / devider);
+    while (devider >= 1) {
+      if (numbersSet.has(digit)) {
+        numbersSet.delete(digit);
+      }
+      number  %= devider;
+      devider /= 10;
+      digit = Math.floor(number / devider);
+    }
+    if (numbersSet.size === 0) {
+      return array[i];
+    }
+  }
+  return "Missing digits!";
 }
+
 
 exports.solution = findAllDigits;

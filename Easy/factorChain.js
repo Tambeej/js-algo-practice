@@ -18,8 +18,14 @@ factorChain([2, 4, 6, 7, 12]) ➞ false
 factorChain([10, 1]) ➞ false
 */
 
-function factorChain( /*args*/ ) {
-  //your code
+function factorChain(array) {
+  for (let i = 0; i < array.length - 1; i++) {
+    if (array[i + 1] % array[i] != 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
+console.log(factorChain([10,1]));
 exports.solution = factorChain;
