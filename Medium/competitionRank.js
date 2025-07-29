@@ -33,8 +33,45 @@ Notes
 The highest score has a rank value of 1..
 */
 
-function competitionRank( /*args*/ ) {
-  //your code
+function competitionRank(competition_rank, competitor) {
+  const competitorScore = competition_rank[competitor];
+
+  let orderedScores = [];
+
+  // copy items to an array so they can be sorted
+  for (let competitorItem in competition_rank) {
+    orderedScores.push(competition_rank[competitorItem]);
+  }
+
+  orderedScores.sort((a, b) => b - a);
+
+  let rank = 1;
+  let currentScore = orderedScores[0];
+  let lastIUpdated = 0;
+  if (currentScore === competitorScore) {
+    return rank;
+  }
+  for (let i = 1; i < orderedScores.length; i++) {
+    if (orderedScores[i] == currentScore) {
+      if (orderedScores[i] === competitorScore) {
+        return rank;
+      }
+    } else {
+      rank += i - lastIUpdated;
+      lastIUpdated = i;
+      currentScore = orderedScores[i];
+      if (orderedScores[i] === competitorScore) {
+        return rank;
+      }
+    }
+  }
+
+  return rank;
 }
+
+competitionRank(
+  { Carson: 92, Cole: 96, Gabriel: 91, Hollie: 97, Penelope: 85 },
+  "Hollie"
+);
 
 exports.solution = competitionRank;
