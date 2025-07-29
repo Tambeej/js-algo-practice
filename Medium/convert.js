@@ -12,8 +12,16 @@ Round to the nearest integer.
 If the input is incorrect, return "Error".
 */
 
-function convert( /*args*/ ) {
-  //your code
+function convert(givenDegree) {
+  if (givenDegree.includes("F")) {
+    let current = givenDegree.slice(0, -2);
+    return String(Math.round(((Number(current) - 32) * 5) / 9)) + "°C";
+  }
+  if (givenDegree.includes("C")) {
+    let current = givenDegree.slice(0, -2);
+    return String(Math.round((Number(current) * 9) / 5 + 32)) + "°F";
+  }
+  return "Error";
 }
 
 exports.solution = convert;
