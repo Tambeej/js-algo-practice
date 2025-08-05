@@ -14,8 +14,14 @@ Notes
 Remember to sort the keys.
 */
 
-function keysAndValues( /*args*/ ) {
-  //your code
+function keysAndValues(givenSet) {
+  let keys = [];
+  let values = [];
+  for (let key in givenSet) {
+    keys.push(key);
+    values.push(givenSet[key]);
+  }
+  return [keys, values];
 }
 
 exports.solution = keysAndValues;
