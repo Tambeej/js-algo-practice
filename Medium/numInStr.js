@@ -14,8 +14,19 @@ The strings can contain white spaces or any type of characters.
 Bonus: Try solving this without regex.
 */
 
-function numInStr( /*args*/ ) {
-  //your code
+function numInStr(strArray) {
+  let containsNum = [];
+  let sortedStr;
+  let noSpacesStr;
+  for (let str of strArray) {
+    noSpacesStr = str.replace(/\s+/g, "");
+    sortedStr = noSpacesStr.split("");
+    sortedStr.sort();
+    if (sortedStr[0] < 10 && sortedStr[0] !== " ") {
+      containsNum.push(str);
+    }
+  }
+  return containsNum;
 }
-
+numInStr(["1", "a", " ", "b"]);
 exports.solution = numInStr;
