@@ -11,8 +11,36 @@ oddishOrEvenish(373) ➞ "Oddish"
 oddishOrEvenish(4433) ➞ "Evenish"
 */
 
-function oddishOrEvenish( /*args*/ ) {
-  //your code
+function oddishOrEvenish(number) {
+  let numbers = number.toString().split("");
+  numbers.sort((a, b) => {
+    const isAOdd = a % 2 !== 0;
+    const isBOdd = b % 2 !== 0;
+
+    if (isAOdd && !isBOdd) {
+      // a is odd, b is even - a comes first
+      return -1;
+    } else if (!isAOdd && isBOdd) {
+      // a is even, b is odd - b comes first
+      return 1;
+    } else {
+      // Both are odd or both are even - sort numerically
+      return a - b;
+    }
+  });
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      if (i % 2 === 0) {
+        return "Evenish";
+      } else {
+        return "Oddish";
+      }
+    }
+  }
+  if (numbers.length % 2 === 0) {
+    return "Evenish";
+  }
+  return "Oddish";
 }
 
 exports.solution = oddishOrEvenish;
