@@ -12,8 +12,40 @@ Output array must be sorted in ascending order
 The only positive integer which is neither prime nor composite is 1. Return an empty array if 1 is the input.
 */
 
-function primeFactorize( /*args*/ ) {
-  //your code
+function primeFactorize(num) {
+  let primes = [];
+  let devider = 2;
+
+  while (!isPrime(num) && num >= 2) {
+    if (num % devider === 0) {
+      if (isPrime(devider)) {
+        primes.push(devider);
+      }
+      num /= devider;
+    } else {
+      devider++;
+    }
+  }
+  if (isPrime(num)) {
+    primes.push(num);
+  }
+  return primes;
 }
+
+function isPrime(num) {
+  if (num <= 1) {
+    return false;
+  }
+
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+console.log(primeFactorize(100));
 
 exports.solution = primeFactorize;
