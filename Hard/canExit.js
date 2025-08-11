@@ -44,8 +44,82 @@ In a maze of size m x n, you enter at [0, 0] and exit at [m-1, n-1].
 There can be dead ends in a maze - one exit path is sufficient.
 */
 
-function canExit( /*args*/ ) {
-  //your code
+// function canExitHelper(matrix, x, y, prevSet) {
+//   if (y == matrix.length && x == matrix[0].length) {
+//     return true;
+//   }
+//   if (x != 0 && !prevSet.has(`${x - 1} , ${y}`) && matrix[x - 1][y] == 0) {
+//     prevSet.add(`${x - 1} , ${y}`);
+//     if (canExitHelper(matrix, x - 1, y, prevSet)) {
+//       return true;
+//     }
+//   }
+//   if (y != 0 && !prevSet.has(`${x} , ${y - 1}`) && matrix[x][y - 1] == 0) {
+//     prevSet.add(`${x} , ${y - 1}`);
+//     if (canExitHelper(matrix, x, y - 1, prevSet)) {
+//       return true;
+//     }
+//   }
+//   if (
+//     x != matrix[0].length &&
+//     !prevSet.has(`${x + 1} , ${y}`) &&
+//     matrix[x + 1][y] == 0
+//   ) {
+//     prevSet.add(`${x + 1} , ${y}`);
+//     if (canExitHelper(matrix, x + 1, y, prevSet)) {
+//       return true;
+//     }
+//   }
+//   if (
+//     y != matrix.length &&
+//     !prevSet.has(`${x} , ${y + 1}`) &&
+//     matrix[x][y + 1] == 0
+//   ) {
+//     prevSet.add(`${x} , ${y + 1}`);
+//     if (canExitHelper(matrix, x, y + 1, prevSet)) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+function canExitHelper(matrix, row, col, visited) {
+  const rows = matrix.length;
+  const cols = matrix[0].length;
+
+  if (row === rows - 1 && col === cols - 1) return true;
+  const moves = [
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+  ];
+
+  for (let [xVal, yVal] of moves) {
+    const newRow = row + xVal;
+    const newCol = col + yVal;
+    const key = `${newRow},${newCol}`;
+
+    if (
+      newRow >= 0 &&
+      newRow < rows &&
+      newCol >= 0 &&
+      newCol < cols &&
+      matrix[newRow][newCol] === 0 &&
+      !visited.has(key)
+    ) {
+      visited.add(key);
+      if (canExitHelper(matrix, newRow, newCol, visited)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+function canExit(matrix) {
+  const prevSet = new Set(["0 , 0"]);
+  return canExitHelper(matrix, 0, 0, prevSet);
 }
 
 exports.solution = canExit;
