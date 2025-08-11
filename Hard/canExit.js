@@ -44,44 +44,7 @@ In a maze of size m x n, you enter at [0, 0] and exit at [m-1, n-1].
 There can be dead ends in a maze - one exit path is sufficient.
 */
 
-// function canExitHelper(matrix, x, y, prevSet) {
-//   if (y == matrix.length && x == matrix[0].length) {
-//     return true;
-//   }
-//   if (x != 0 && !prevSet.has(`${x - 1} , ${y}`) && matrix[x - 1][y] == 0) {
-//     prevSet.add(`${x - 1} , ${y}`);
-//     if (canExitHelper(matrix, x - 1, y, prevSet)) {
-//       return true;
-//     }
-//   }
-//   if (y != 0 && !prevSet.has(`${x} , ${y - 1}`) && matrix[x][y - 1] == 0) {
-//     prevSet.add(`${x} , ${y - 1}`);
-//     if (canExitHelper(matrix, x, y - 1, prevSet)) {
-//       return true;
-//     }
-//   }
-//   if (
-//     x != matrix[0].length &&
-//     !prevSet.has(`${x + 1} , ${y}`) &&
-//     matrix[x + 1][y] == 0
-//   ) {
-//     prevSet.add(`${x + 1} , ${y}`);
-//     if (canExitHelper(matrix, x + 1, y, prevSet)) {
-//       return true;
-//     }
-//   }
-//   if (
-//     y != matrix.length &&
-//     !prevSet.has(`${x} , ${y + 1}`) &&
-//     matrix[x][y + 1] == 0
-//   ) {
-//     prevSet.add(`${x} , ${y + 1}`);
-//     if (canExitHelper(matrix, x, y + 1, prevSet)) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
+
 
 function canExitHelper(matrix, row, col, visited) {
   const rows = matrix.length;
