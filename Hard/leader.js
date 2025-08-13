@@ -15,8 +15,15 @@ Notes
 Add elements in the new array in the same way they occur in the input array.
 */
 
-function leader( /*args*/ ) {
-  //your code
+function leader(array) {
+  let newArray = [array[array.length - 1]];
+  for (let i = array.length - 1; i > 0; i--) {
+    if (newArray[newArray.length - 1] < array[i - 1]) {
+      newArray.push(array[i - 1]);
+    }
+  }
+  newArray.reverse();
+  return newArray;
 }
 
 exports.solution = leader;
