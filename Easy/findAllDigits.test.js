@@ -26,7 +26,7 @@ ${[6572,3752,9661,7017,8139,2596,3054,2730,1350,2483]} |${3054}
 ${[2102,4519,4229,8347,2019,7342,7181,8977,1339,9988]} |${"Missing digits!"}
 ${[4467,2849,5706,7330,9488,2529,8837,2256,3975,7311]} |${7311}
 `
-    ("returns $expected when calling with the following param/s: a", ({
+    ("returns $expected when calling with the following param/s: $a", ({
       a,
       expected
     }) => {

@@ -22,7 +22,7 @@ ${[1,1,1,1]} |${true}
 ${[-1,1,-1]} |${true}
 ${[-1,1,1]} |${false}
 `
-    ("returns $expected when calling with the following param/s: a", ({
+    ("returns $expected when calling with the following param/s: $a", ({
       a,
       expected
     }) => {

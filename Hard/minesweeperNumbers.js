@@ -25,8 +25,55 @@ Since in the output the numbers 0-8 are used to determine the amount of adjacent
 A wikipedia page explaining how Minesweeper works is available in the Resources tab
 */
 
-function minesweeperNumbers(/*args*/) {
-  //your code
+function createMatrix(rows, cols, initialValue = 0) {
+  const matrix = [];
+  for (let i = 0; i < rows; i++) {
+    const row = [];
+    for (let j = 0; j < cols; j++) {
+      row.push(initialValue);
+    }
+    matrix.push(row);
+  }
+  return matrix;
 }
+
+function minesweeperNumbers(matrix) {
+  const rows = matrix.length;
+  if (!rows) {
+    return [];
+  }
+  const cols = matrix[0].length;
+  let newMat = createMatrix(rows, cols);
+  const neighboures = [
+    [-1, 0],
+    [-1, 1],
+    [-1, -1],
+    [1, 0],
+    [1, 1],
+    [1, -1],
+    [0, -1],
+    [0, 1],
+  ];
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (matrix[row][col] == 1) {
+        newMat[row][col] = 9;
+      } else {
+        for (let [xVal, yVal] of neighboures) {
+          const newRow = row + xVal;
+          const newCol = col + yVal;
+
+          if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
+            newMat[row][col] += matrix[newRow][newCol];
+          }
+        }
+      }
+    }
+  }
+  return newMat;
+}
+
+
 
 exports.solution = minesweeperNumbers;

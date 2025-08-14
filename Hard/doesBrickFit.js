@@ -24,12 +24,12 @@ function doesBrickFit(
   const holeMax = Math.max(holeWidth, holeHeight);
 
   return (
-    (Math.min(brickDepth, holeWidth) <= holeMin &&
-      Math.max(brickDepth, holeWidth) <= holeMax) ||
-    (Math.min(holeWidth, holeHeight) <= holeMin &&
-      Math.max(holeWidth, holeHeight) <= holeMax) ||
-    (Math.min(brickDepth, holeHeight) <= holeMin &&
-      Math.max(brickDepth, holeHeight) <= holeMax)
+    (Math.min(brickDepth, brickWidth) <= holeMin &&
+      Math.max(brickDepth, brickWidth) <= holeMax) ||
+    (Math.min(brickWidth, brickHeight) <= holeMin &&
+      Math.max(brickWidth, brickHeight) <= holeMax) ||
+    (Math.min(brickDepth, brickHeight) <= holeMin &&
+      Math.max(brickDepth, brickHeight) <= holeMax)
   );
 }
 

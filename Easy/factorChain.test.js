@@ -13,7 +13,7 @@ ${[10,20,30,40]} |${false}
 ${[10,20,40]} |${true}
 ${[1,1,1,1,7,49]} |${true}
 `
-    ("returns $expected when calling with the following param/s: a", ({
+    ("returns $expected when calling with the following param/s: $a", ({
       a,
       expected
     }) => {

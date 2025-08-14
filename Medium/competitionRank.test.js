@@ -26,7 +26,7 @@ ${{"Andrew":95,"Louis":95,"Riley":95,"Amy":95,"Charlotte":95}} |${"Charlotte"} |
 ${{"Harry":81,"Elsie":81,"Grayson":84,"John":84,"Alex":81}} |${"Elsie"} |${3}
 ${{"Innes":76,"Lola":85,"Anna":92,"Cooper":93,"Daniel":93}} |${"Cooper"} |${1}
 `
-    ("returns $expected when calling with the following param/s: a, b", ({
+    ("returns $expected when calling with the following param/s: $a, $b", ({
       a,
       b,
       expected
