@@ -30,8 +30,59 @@ sudokuValidator([
 ]) ➞ false
 */
 
-function sudokuValidator(/*args*/) {
-  //your code
+function hasDuplicates(arr) {
+  return new Set(arr).size !== arr.length;
+}
+
+function columnsToSets(matrix) {
+  const numRows = matrix.length;
+  const numCols = matrix[0].length;
+  const columnSets = Array.from({ length: numCols }, () => new Set());
+
+  for (let col = 0; col < numCols; col++) {
+    for (let row = 0; row < numRows; row++) {
+      columnSets[col].add(matrix[row][col]);
+    }
+  }
+
+  return columnSets;
+}
+
+function boxToSets(matrix) {
+  const numRows = matrix.length;
+  const numCols = matrix[0].length;
+  for (let boxRow = 0; boxRow < numRows; boxRow += 3) {
+    for (let boxCol = 0; boxCol < numCols; boxCol += 3) {
+      const box = [];
+      for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
+          box.push(matrix[boxRow + row][boxCol + col]);
+        }
+      }
+      if (hasDuplicates(box)) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function sudokuValidator(matrix) {
+  for (let row of matrix) {
+    if (hasDuplicates(row)) {
+      return false;
+    }
+  }
+  const columnsMatrix = columnsToSets(matrix);
+  for (let set of columnsMatrix) {
+    if (set.size !== 9) {
+      return false;
+    }
+  }
+  if (!boxToSets(matrix)) {
+    return false;
+  }
+  return true;
 }
 
 exports.solution = sudokuValidator;
